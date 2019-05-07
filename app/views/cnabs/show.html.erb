@@ -1,0 +1,26 @@
+<h1>COMPRAS</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome da loja</th>
+      <th>descrição</th>
+      <th>valor</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <td><%= purchase.store_name %></td>
+        <td><%= purchase.transaction_description %></td>
+        <td><%= number_to_currency(purchase.amount) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<p> Total Ganhos:  <%= number_to_currency(total_credit(@purchases)) %></p>
+<p> Total Debitos: <%= number_to_currency(total_discount(@purchases)) %></p>
